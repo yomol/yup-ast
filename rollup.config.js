@@ -35,6 +35,22 @@ export default [
       resolve({ extensions: [".js", ".ts", ".tsx"] }),
       commonjs(),
       typescript({ useTsconfigDeclarationDir: true }),
+      require("@rollup/plugin-babel").babel({
+        babelHelpers: "runtime",
+        exclude: "node_modules/**",
+        presets: [
+          [
+            "@babel/preset-env",
+            {
+              targets: { node: "12" },
+              modules: false,
+            },
+          ],
+          "@babel/preset-typescript",
+        ],
+        plugins: ["@babel/plugin-transform-runtime"],
+        extensions: [".js", ".ts"],
+      }),
       terser(),
     ],
     output: {

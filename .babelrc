@@ -1,24 +1,7 @@
 {
   "presets": [
-    [
-      "env",
-      {
-        "modules": false
-      }
-    ],
-      "node8",
-      "stage-0"
+    ["@babel/preset-env", { "modules": false }],
+    "@babel/preset-typescript"
   ],
-  "env": {
-    "production": {
-      "only": ["app"],
-      "plugins": [
-        "transform-react-constant-elements",
-        "transform-react-inline-elements"
-      ]
-    },
-    "test": {
-      "plugins": ["transform-es2015-modules-commonjs", "dynamic-import-node"]
-    }
-  }
+  "plugins": ["@babel/plugin-transform-runtime"]
 }
